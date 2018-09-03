@@ -1,0 +1,14 @@
+.table .others {
+    width: 25%
+}
+.SubRowList {
+    margin-left: 0px !important;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+
+}
+.calendarRow {
+    display: flex;
+    align-items: center
+}

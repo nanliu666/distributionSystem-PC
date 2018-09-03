@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下级关系</title>
+    <link rel="stylesheet" href="../public.css">
+    <link rel="stylesheet" href="./sub.css">
+    <link rel='stylesheet' href='../icon/iconfont.css'>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../plugins/daterangepicker/moment.min.js"></script>
+    <script src="../plugins/daterangepicker/daterangepicker.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>微信名</td>
+                <td>test</td>
+            </tr>
+            <tr>
+                <td>绑定代理</td>
+                <td>admin</td>
+            </tr>
+            <tr>
+                <td>层级</td>
+                <td>1</td>
+            </tr>
+        </table>
+        <p>收益详情</p>
+        <DIV class="row SubRowList">
+            <div class="col-md-4">
+                <div class="row calendarRow">
+                    <input type="text" id="config-demo" class="col-md-6">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar col-md-2"></i>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary col-md-2">查询</button>
+        </DIV>
+        <table class="table table-bordered table-striped" id='table'>
+            <thead>
+                <tr>
+                    <th class="text-center">游戏</th>
+                    <th class="text-center">收益(元)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <div class="empty">没有找到数据。</div>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="kv-page-summary warning">
+                    <td>总计</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+<script>
+    var beginTimeStore = '';
+    var endTimeStore = '';
+    $('#config-demo').daterangepicker({
+        "timePicker": true,
+        "timePicker24Hour": true,
+        "linkedCalendars": false,
+        "autoUpdateInput": false,
+        "locale": {
+            format: 'YYYY-MM-DD',
+            separator: ' ~ ',
+            applyLabel: "确定",
+            cancelLabel: "取消",
+            resetLabel: "重置",
+        }
+    }, function(start, end, label) {
+        beginTimeStore = start;
+        endTimeStore = end;
+        console.log(this.startDate.format(this.locale.format));
+        console.log(this.endDate.format(this.locale.format));
+        if (!this.startDate) {
+            this.element.val('');
+        } else {
+            this.element.val(this.startDate.format(this.locale.format) + this.locale.separator + this.endDate.format(
+                this.locale.format));
+        }
+    });
+</script>
+
+</html>

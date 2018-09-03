@@ -1,0 +1,45 @@
+.time {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10px;
+    margin: 20px 0;
+}
+.Total {
+    background-color: rgb(242, 242, 242);
+    height: 120px;
+    width: 31%;
+    border: 1px solid #797979;
+    border-radius: 15px;
+}
+
+.week {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.week > p {
+    margin-top: 24px;
+}
+
+
+/**绩效奖部分CSS**/
+.meritPay {
+    margin: 20px 0;
+}
+.TotalTable {
+    background-color: rgb(249, 249, 249);
+}
+
+.TotalTable > thead th {
+    text-align: center;
+}
+.RowList {
+    display: inline;
+    margin: 10px 0;
+}
+.TotalSEO {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}

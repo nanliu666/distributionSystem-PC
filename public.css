@@ -1,0 +1,10 @@
+.container {
+    padding: 70px 15px 20px
+}
+
+a{
+    text-decoration: none !important
+}
+a:hover {
+    text-decoration: none !important
+}
