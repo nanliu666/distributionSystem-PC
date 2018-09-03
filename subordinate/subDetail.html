@@ -18,53 +18,51 @@
 </head>
 
 <body>
-    <div class="container">
-        <table class="table table-bordered table-striped">
-            <tr>
-                <td>微信名</td>
-                <td>test</td>
-            </tr>
-            <tr>
-                <td>绑定代理</td>
-                <td>admin</td>
-            </tr>
-            <tr>
-                <td>层级</td>
-                <td>1</td>
-            </tr>
-        </table>
-        <p>收益详情</p>
-        <DIV class="row SubRowList">
-            <div class="col-md-4">
-                <div class="row calendarRow">
-                    <input type="text" id="config-demo" class="col-md-6">
-                    <i class="glyphicon glyphicon-calendar fa fa-calendar col-md-2"></i>
-                </div>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>微信名</td>
+            <td>test</td>
+        </tr>
+        <tr>
+            <td>绑定代理</td>
+            <td>admin</td>
+        </tr>
+        <tr>
+            <td>层级</td>
+            <td>1</td>
+        </tr>
+    </table>
+    <p>收益详情</p>
+    <DIV class="row SubRowList">
+        <div class="col-md-4">
+            <div class="row calendarRow">
+                <input type="text" id="config-demo" class="col-md-6">
+                <i class="glyphicon glyphicon-calendar fa fa-calendar col-md-2"></i>
             </div>
-            <button type="button" class="btn btn-primary col-md-2">查询</button>
-        </DIV>
-        <table class="table table-bordered table-striped" id='table'>
-            <thead>
-                <tr>
-                    <th class="text-center">游戏</th>
-                    <th class="text-center">收益(元)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colspan="2">
-                        <div class="empty">没有找到数据。</div>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr class="kv-page-summary warning">
-                    <td>总计</td>
-                    <td></td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+        </div>
+        <button type="button" class="btn btn-primary col-md-2">查询</button>
+    </DIV>
+    <table class="table table-bordered table-striped" id='table'>
+        <thead>
+            <tr>
+                <th class="text-center">游戏</th>
+                <th class="text-center">收益(元)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    <div class="empty">没有找到数据。</div>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="kv-page-summary warning">
+                <td>总计</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
 </body>
 <script>
     var beginTimeStore = '';
@@ -94,5 +92,3 @@
         }
     });
 </script>
-
-</html>
