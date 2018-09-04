@@ -4,6 +4,7 @@
     padding: 0 10px;
     margin: 20px 0;
 }
+
 .Total {
     background-color: rgb(242, 242, 242);
     height: 120px;
@@ -18,26 +19,32 @@
     font-weight: bold;
 }
 
-.week > p {
+.week>p {
     margin-top: 24px;
 }
 
 
 /**绩效奖部分CSS**/
-.meritPay {
+
+.search {
     margin: 20px 0;
 }
+
 .TotalTable {
     background-color: rgb(249, 249, 249);
 }
 
-.TotalTable > thead th {
+.TotalTable>thead th {
     text-align: center;
 }
-.RowList {
-    display: inline;
-    margin: 10px 0;
+
+@media screen and (max-width: 768px) {
+    .search {
+        display: flex;
+        flex-direction: column
+    }
 }
+
 .TotalSEO {
     display: flex;
     justify-content: center;
