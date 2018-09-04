@@ -88,6 +88,8 @@
                     dataType: "json",
                     data: param,
                     success: function(result, status) {
+                        console.log("result=>", result.data)
+                        window.localStorage.setItem(`userData`, JSON.stringify(result.data));
                         window.location.href = '../index/index.html'
                     },
                     error: function(result, status) {
