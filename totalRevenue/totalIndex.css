@@ -38,15 +38,10 @@
     text-align: center;
 }
 
-@media screen and (max-width: 768px) {
-    .search {
-        display: flex;
-        flex-direction: column
-    }
+.divHidden {
+    display: none!important;
 }
 
-.TotalSEO {
-    display: flex;
-    justify-content: center;
-    align-content: center;
+.divShow {
+    display: block!important;
 }

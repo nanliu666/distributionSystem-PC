@@ -8,233 +8,112 @@
     <link rel="stylesheet" href="./totalIndex.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../plugins/bootstrap-select-1.13.2/dist/css/bootstrap-select.css">
+    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../plugins/bootstrap-select-1.13.2/dist/js/bootstrap-select.js"></script>
+    <script src="../plugins/daterangepicker/moment.min.js"></script>
+    <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 </head>
 
 <body>
-    <ul id="myTab" class="nav nav-tabs">
-        <li class="active"><a href="#totalRevenue" data-toggle="tab">总收益</a></li>
-        <li><a href="#bonusInfo" data-toggle="tab">绩效奖</a></li>
-        <li><a href="#rebateInfo" data-toggle="tab">分销收益</a></li>
-        <li><a href="#region" data-toggle="tab">大区返利</a></li>
-    </ul>
-    <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in active" id="totalRevenue">
-            <div class="time">
-                <div class="Total week">
-                    <p>本周收益</p>
-                    <div>
-                        <span>￥</span> <span>num</span>
-                    </div>
-                </div>
-                <div class="Total week">
-                    <p>本月收益</p>
-                    <div>
-                        <span>￥</span> <span>num</span>
-                    </div>
-                </div>
-                <div class="Total week">
-                    <p>累计收益</p>
-                    <div>
-                        <span>￥</span> <span>num</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <table class="table table-bordered table-hover TotalTable">
-                    <thead>
-                        <tr>
-                            <th>时间</th>
-                            <th>分销收益（元）</th>
-                            <th>绩效奖（元）</th>
-                            <th>合计</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Tanmay</td>
-                            <td>Bangalore</td>
-                            <td>560001</td>
-                            <td>560001</td>
-                        </tr>
-                        <tr>
-                            <td>Sachin</td>
-                            <td>Mumbai</td>
-                            <td>400003</td>
-                            <td>400003</td>
-                        </tr>
-                        <tr>
-                            <td>Uma</td>
-                            <td>Pune</td>
-                            <td>411027</td>
-                            <td>411027</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="bonusInfo">
-            <div class="search">
-                <div class="row">
-                    <div class="RowList col-lg-4  col-md-6 col-xs-12">
-                        <select class='selectpicker col-lg-4  col-md-6 col-xs-12'>
-                                <option value="">绩效奖单号</option>
-                                <option value="">直属代理名称</option>
-                                <option value="">绩效奖金</option>
-                                <option value="">获奖时间</option>
-                                <option value="">状态</option>
-                            </select>
-                        <input type="text" class="col-lg-4  col-md-6 col-xs-12">
-                    </div>
-                    <div class="RowList col-lg-4 TotalSEO"><button type="button" class="btn-block btn-primary">搜索</button></div>
-                </div>
-            </div>
-            <div>
-                <table class="table table-bordered table-hover TotalTable">
-                    <thead>
-                        <tr>
-                            <td>绩效奖单号</td>
-                            <td>直属代理名称</td>
-                            <td>绩效奖金</td>
-                            <td>获奖时间</td>
-                            <td>状态</td>
-                            <td></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>123</td>
-                            <td>45元</td>
-                            <td>2018/11/4</td>
-                            <td>完成</td>
-                            <td><a href="#">详情</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>123</td>
-                            <td>45元</td>
-                            <td>2018/11/4</td>
-                            <td>完成</td>
-                            <td><a href="#">详情</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>123</td>
-                            <td>45元</td>
-                            <td>2018/11/4</td>
-                            <td>完成</td>
-                            <td><a href="#">详情</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>123</td>
-                            <td>45元</td>
-                            <td>2018/11/4</td>
-                            <td>完成</td>
-                            <td><a href="#">详情</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="rebateInfo">
-            <div class="search">
-                <div class="row RowList">
-                    <div class="col-lg-4  col-md-6 col-xs-12">
-                        <select class='selectpicker col-lg-4  col-md-6 col-xs-12'>
-                            <option value="">返利单号</option>
-                            <option value="">用户id</option>
-                            <option value="">返利实得(元)</option>
-                            <option value="">返利时间</option>
-                            <option value="">状态</option>
-                        </select>
-                        <div class="col-lg-4  col-md-6 col-xs-12">
-                            <input type="text">
+    <div class="container">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#totalRevenue" data-toggle="tab">总收益</a></li>
+            <li><a href="#bonusInfo" data-toggle="tab">绩效奖</a></li>
+            <li><a href="#rebateInfo" data-toggle="tab">分销收益</a></li>
+            <li><a href="#region" data-toggle="tab">大区返利</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="totalRevenue">
+                <div class="time">
+                    <div class="Total week">
+                        <p>本周收益</p>
+                        <div>
+                            <span>￥</span> <span>num</span>
                         </div>
                     </div>
-                    <div class="col-lg-4"><button type="button" class="btn-block btn-primary">搜索</button></div>
-                </div>
-            </div>
-            <div>
-                <table class="table table-bordered table-hover TotalTable">
-                    <thead>
-                        <tr>
-                            <td>返利单号</td>
-                            <td>用户id</td>
-                            <td>返利实得(元)</td>
-                            <td>返利时间</td>
-                            <td>状态</td>
-                            <td></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>123</td>
-                            <td>45元</td>
-                            <td>2018/11/4</td>
-                            <td>完成</td>
-                            <td><a href="#">详情</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>123</td>
-                            <td>45元</td>
-                            <td>2018/11/4</td>
-                            <td>完成</td>
-                            <td><a href="#">详情</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>123</td>
-                            <td>45元</td>
-                            <td>2018/11/4</td>
-                            <td>完成</td>
-                            <td><a href="#">详情</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>123</td>
-                            <td>45元</td>
-                            <td>2018/11/4</td>
-                            <td>完成</td>
-                            <td><a href="#">详情</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="region">
-            <div class="meritPay">
-                <div class="search">
-                    <div class="row">
-                        <div class="RowList col-lg-4  col-md-6 col-xs-12">
-                            <select class='selectpicker col-lg-4  col-md-6 col-xs-12'>
-                                <option value="">单号</option>
-                                <option value="">整线返利服务</option>
-                                <option value="">绩效奖金</option>
-                                <option value="">返利金额</option>
-                                <option value="">返利时间</option>
-                                <option value="">状态</option>
-                            </select>
-                            <input type="text" class="col-lg-4  col-md-6 col-xs-12">
+                    <div class="Total week">
+                        <p>本月收益</p>
+                        <div>
+                            <span>￥</span> <span>num</span>
                         </div>
-                        <div class="RowList col-lg-4 TotalSEO"><button type="button" class="btn-block btn-primary">搜索</button></div>
+                    </div>
+                    <div class="Total week">
+                        <p>累计收益</p>
+                        <div>
+                            <span>￥</span> <span>num</span>
+                        </div>
                     </div>
                 </div>
                 <div>
                     <table class="table table-bordered table-hover TotalTable">
                         <thead>
                             <tr>
-                                <td>单号</td>
-                                <td>整线返利服务</td>
+                                <th>时间</th>
+                                <th>分销收益（元）</th>
+                                <th>绩效奖（元）</th>
+                                <th>合计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tanmay</td>
+                                <td>Bangalore</td>
+                                <td>560001</td>
+                                <td>560001</td>
+                            </tr>
+                            <tr>
+                                <td>Sachin</td>
+                                <td>Mumbai</td>
+                                <td>400003</td>
+                                <td>400003</td>
+                            </tr>
+                            <tr>
+                                <td>Uma</td>
+                                <td>Pune</td>
+                                <td>411027</td>
+                                <td>411027</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="bonusInfo">
+                <div class="input-group calendarRow col-lg-5">
+                    <span class="input-group-addon">获奖时间:</span>
+                    <input type="text" class="form-control" id="calendar">
+                </div>
+                <div class="row" style="margin: 10px 0">
+                    <div class="col-lg-5">
+                        <div class="col-lg-3" id="JsState">
+                            <select class='selectpicker '>
+                                        <option value="">绩效奖单号</option>
+                                        <option value="">直属代理名称</option>
+                                        <option value="">绩效奖金</option>
+                                        <option value="state">状态</option>
+                                    </select>
+                        </div>
+                        <div id="JsStateDetail" class="divHidden col-lg-offset-3 col-lg-3">
+                            <select name="" class='selectpicker '>
+                                            <option value="">已完成</option>
+                                            <option value="">未完成</option>
+                                </select>
+                        </div>
+                        <div class=" col-lg-offset-6 col-lg-6 divShow" style="float: none">
+                            <input type="text" id="JsIpnut" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-2"><button type="button" class="btn-block btn-primary" style="display: flex; justify-content: center;height: 34px;">搜索</button></div>
+                </div>
+                <div>
+                    <table class="table table-bordered table-hover TotalTable">
+                        <thead>
+                            <tr>
+                                <td>绩效奖单号</td>
+                                <td>直属代理名称</td>
                                 <td>绩效奖金</td>
-                                <td>返利金额</td>
-                                <td>返利时间</td>
+                                <td>获奖时间</td>
                                 <td>状态</td>
                                 <td></td>
                             </tr>
@@ -244,7 +123,6 @@
                                 <td>1</td>
                                 <td>123</td>
                                 <td>45元</td>
-                                <td>7878元</td>
                                 <td>2018/11/4</td>
                                 <td>完成</td>
                                 <td><a href="#">详情</a></td>
@@ -253,7 +131,6 @@
                                 <td>1</td>
                                 <td>123</td>
                                 <td>45元</td>
-                                <td>7878元</td>
                                 <td>2018/11/4</td>
                                 <td>完成</td>
                                 <td><a href="#">详情</a></td>
@@ -262,7 +139,6 @@
                                 <td>1</td>
                                 <td>123</td>
                                 <td>45元</td>
-                                <td>7878元</td>
                                 <td>2018/11/4</td>
                                 <td>完成</td>
                                 <td><a href="#">详情</a></td>
@@ -271,7 +147,6 @@
                                 <td>1</td>
                                 <td>123</td>
                                 <td>45元</td>
-                                <td>7878元</td>
                                 <td>2018/11/4</td>
                                 <td>完成</td>
                                 <td><a href="#">详情</a></td>
@@ -280,13 +155,195 @@
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="tab-pane fade" id="rebateInfo">
+                <div class="input-group calendarRow col-lg-5">
+                    <span class="input-group-addon">返利时间:</span>
+                    <input type="text" class="form-control" id="calendar">
+                </div>
+                <div class="row" style="margin: 10px 0">
+                    <div class="col-lg-5">
+                        <div class="col-lg-3" id="JsState">
+                            <select class='selectpicker '>
+                                            <option value="">返利单号</option>
+                                            <option value="">用户id</option>
+                                            <option value="state">状态</option>
+                            </select>
+                        </div>
+                        <div id="JsStateDetail" class="divHidden col-lg-offset-3 col-lg-3">
+                            <select name="" class='selectpicker '>
+                                                <option value="">已完成</option>
+                                                <option value="">未完成</option>
+                                    </select>
+                        </div>
+                        <div class=" col-lg-offset-6 col-lg-6 divShow" style="float: none">
+                            <input type="text" id="JsIpnut" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-2"><button type="button" class="btn-block btn-primary" style="display: flex; justify-content: center;height: 34px;">搜索</button></div>
+                </div>
+                <div>
+                    <table class="table table-bordered table-hover TotalTable">
+                        <thead>
+                            <tr>
+                                <td>返利单号</td>
+                                <td>用户id</td>
+                                <td>返利时间</td>
+                                <td>状态</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>45元</td>
+                                <td>2018/11/4</td>
+                                <td>完成</td>
+                                <td><a href="#">详情</a></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>45元</td>
+                                <td>2018/11/4</td>
+                                <td>完成</td>
+                                <td><a href="#">详情</a></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>45元</td>
+                                <td>2018/11/4</td>
+                                <td>完成</td>
+                                <td><a href="#">详情</a></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>45元</td>
+                                <td>2018/11/4</td>
+                                <td>完成</td>
+                                <td><a href="#">详情</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="region">
+                <div class="input-group calendarRow col-lg-5">
+                    <span class="input-group-addon">获奖时间:</span>
+                    <input type="text" class="form-control" id="calendar">
+                </div>
+                <div class="row" style="margin: 10px 0">
+                    <div class="col-lg-5">
+                        <div class="col-lg-3" id="JsState">
+                            <select class='selectpicker '>
+                                                <option value="">绩效奖单号</option>
+                                                <option value="">直属代理名称</option>
+                                                <option value="">绩效奖金</option>
+                                                <option value="state">状态</option>
+                                            </select>
+                        </div>
+                        <div id="JsStateDetail" class="divHidden col-lg-offset-3 col-lg-3">
+                            <select name="" class='selectpicker '>
+                                                    <option value="">已完成</option>
+                                                    <option value="">未完成</option>
+                                        </select>
+                        </div>
+                        <div class=" col-lg-offset-6 col-lg-6 divShow" style="float: none">
+                            <input type="text" id="JsIpnut" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-2"><button type="button" class="btn-block btn-primary" style="display: flex; justify-content: center;height: 34px;">搜索</button></div>
+                </div>
+                <div>
+                    <table class="table table-bordered table-hover TotalTable">
+                        <thead>
+                            <tr>
+                                <td>绩效奖单号</td>
+                                <td>直属代理名称</td>
+                                <td>绩效奖金</td>
+                                <td>获奖时间</td>
+                                <td>状态</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>123</td>
+                                <td>45元</td>
+                                <td>2018/11/4</td>
+                                <td>完成</td>
+                                <td><a href="#">详情</a></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>123</td>
+                                <td>45元</td>
+                                <td>2018/11/4</td>
+                                <td>完成</td>
+                                <td><a href="#">详情</a></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>123</td>
+                                <td>45元</td>
+                                <td>2018/11/4</td>
+                                <td>完成</td>
+                                <td><a href="#">详情</a></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>123</td>
+                                <td>45元</td>
+                                <td>2018/11/4</td>
+                                <td>完成</td>
+                                <td><a href="#">详情</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 </body>
 <script>
-    $(document).ready(
-
-    )
+    $(document).ready(function() {
+        $('#JsState').on('change', function() {
+            if ($("option:selected", this).val() == 'state') {
+                $('#JsStateDetail').addClass('divShow')
+                $('#JsStateDetail').removeClass('divHidden')
+                $('#JsIpnut').addClass('divHidden')
+                $('#JsIpnut').removeClass('divShow')
+            } else {
+                $('#JsStateDetail').addClass('divHidden')
+                $('#JsStateDetail').removeClass('divShow')
+                $('#JsIpnut').addClass('divShow')
+                $('#JsIpnut').removeClass('divHidden')
+            }
+        })
+        let beginTimeStore = '';
+        let endTimeStore = '';
+        $('#calendar').daterangepicker({
+            "timePicker": true,
+            "timePicker24Hour": true,
+            "linkedCalendars": false,
+            "autoUpdateInput": false,
+            "locale": {
+                format: 'YYYY-MM-DD',
+                separator: ' ~ ',
+                applyLabel: "确定",
+                cancelLabel: "取消",
+                resetLabel: "重置",
+            }
+        }, function(start, end, label) {
+            beginTimeStore = start;
+            endTimeStore = end;
+            console.log(this.startDate.format(this.locale.format));
+            console.log(this.endDate.format(this.locale.format));
+            if (!this.startDate) {
+                this.element.val('');
+            } else {
+                this.element.val(this.startDate.format(this.locale.format) + this.locale.separator + this.endDate.format(
+                    this.locale.format));
+            }
+        });
+    })
 </script>
 
 </html>
