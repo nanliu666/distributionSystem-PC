@@ -84,11 +84,39 @@
 </template>
 
 <script>
+import axios from 'axios'
+import Vue from 'vue'
+/*
+*   设置axios的baseURL 全局通用 Vue添加全局方法axios
+* */
+
+axios.defaults.baseURL = '/api';
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+// axios.defaults.timeout = 5000;
+Vue.prototype.axios = axios;
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  created () {
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+    this.axios({
+      method: 'post',
+      url: 'http://192.168.2.159:9997/v3/statistics/overview',
+      headers: {
+        Authorization: 'Bearer '
+      }
+    })
+        .then(function (res) {
+          console.log(res)
+        })
     }
   }
 }

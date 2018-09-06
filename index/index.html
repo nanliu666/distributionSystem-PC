@@ -88,30 +88,16 @@
 </body>
 <script>
     let bearer = JSON.parse(localStorage.getItem('userData')).bearer
-        // axios.defaults.baseURL = 'http://192.168.2.159:9997/v3';
-    axios({
-        method: 'post',
-        url: 'http://192.168.2.159:9997/v3/account/login',
-        data: {
-            type: "username",
-            username: "admin",
-            password: '123456'
+    $.ajax({
+        method: 'POST',
+        url: 'http://192.168.2.159:9997/v3/statistics/overview',
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', "Bearer " + bearer)
         },
-    });
-    // axios.post('/overview', {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + bearer,
-    //         },
-    //         headers: {
-    //             'X-Requested-With': 'XMLHttpRequest'
-    //         },
-    //     })
-    //     .then(function(response) {
-    //         console.log(response);
-    //     })
-    //     .catch(function(error) {
-    //         console.log(error);
-    //     });
+        success: function(data, status) {
+            console.log(data)
+        }
+    })
 </script>
 
 </html>
