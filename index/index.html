@@ -79,9 +79,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                     &times;
                                 </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            公告标题哦，兄弟
-                        </h4>
+                        <h4 class="modal-title" id="myModalLabel"></h4>
                     </div>
                     <div class="modal-body">
                         <div class="tab-content"></div>
@@ -109,15 +107,26 @@
     $('#myModal').modal({
         show: true,
     })
-    let noticeArr = ['公告1', '公告2', '公告3', '公告4', '公告5', '公告6', '公告7', '公告8', '公告9', '公告10', '公告11', '公告12', ]
-    let [HTML, noticeHTML, childrenIndex, totalPages] = ['', '', 2, noticeArr.length]
+    let noticeArr = [{
+        title: '公告1标题',
+        content: '公告1内容'
+    }, {
+        title: '公告2标题',
+        content: '公告2内容'
+    }, {
+        title: '公告3标题',
+        content: '公告3内容'
+    }, ]
+    let [HTML, noticeHTML, noticeTitleArr, childrenIndex, totalPages] = ['', '', [], 2, noticeArr.length]
     for (let i = 0; i < noticeArr.length; i++) {
         HTML += `<div class="alert alert-danger tab-pane fade">
-                    <p>${noticeArr[i]}</p>
+                    <p>${noticeArr[i].content}</p>
                 </div>`
-        noticeHTML += `<li>${noticeArr[i]}</li>`
+        noticeHTML += `<li>${noticeArr[i].content}</li>`
+        noticeTitleArr.push(`${noticeArr[i].title}`)
     }
     $(".tab-content").html(HTML)
+    $("#myModalLabel").html(noticeTitleArr[childrenIndex])
     var options = {
         currentPage: 3,
         totalPages,
@@ -127,6 +136,7 @@
             childrenIndex = index
             $(`.alert`).removeClass('in active')
             $(`.alert:eq(${childrenIndex-1})`).addClass('in active')
+            $("#myModalLabel").html(noticeTitleArr[childrenIndex - 1])
         }
     }
     $(`.alert:eq(${childrenIndex})`).addClass('in active')
@@ -140,6 +150,7 @@
             childrenIndex = i
             $(`.alert`).removeClass('in active')
             $(`.alert:eq(${childrenIndex})`).addClass('in active')
+            $("#myModalLabel").html(noticeTitleArr[childrenIndex])
         }, false)
     }
 
