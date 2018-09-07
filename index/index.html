@@ -18,17 +18,19 @@
     <div class="container">
         <div class="table-responsive">
             <div class="notice">
-                <div class="microsoft marquee" data-toggle="modal" data-target="#myModal">
-                    <span id="JsNotice">公告1</span><span>公告1</span><span>公告1</span>
-                </div>
+                <ul data-toggle="modal" data-target="#myModal" id="noticeDiv"></ul>
             </div>
             <table class="table table-striped table-bordered">
                 <tbody>
                     <tr>
                         <td class="text-center td"><a href="javascript:;">昨天收益</a></td>
-                        <td class="text-center"><a href="javascript:;">num</a></td>
+                        <td class="text-center">
+                            <a class="yesterday_bonus" href="javascript:;"></a>
+                        </td>
                         <td class="text-center  td"><a href='../exchange/exchangeIndex.html'>已提现</a></td>
-                        <td class="text-center"><a href='../exchange/exchangeIndex.html'>num</a></td>
+                        <td class="text-center">
+                            <a class="exchange_sum" href='../exchange/exchangeIndex.html'></a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -83,20 +85,7 @@
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="tab-content">
-                            <div class="alert alert-danger tab-pane fade in active">
-                                <p>公告1</p>
-                            </div>
-                            <div class="alert alert-danger tab-pane fade" id="2">
-                                <p>公告2</p>
-                            </div>
-                            <div class="alert alert-danger tab-pane fade" id="3">
-                                <p>公告3</p>
-                            </div>
-                            <div class="alert alert-danger tab-pane fade" id="4">
-                                <p>公告4</p>
-                            </div>
-                        </div>
+                        <div class="tab-content"></div>
                         <div style="display: flex; flex-direction: row-reverse">
                             <div id="JsPagination" class="pagination"></div>
                         </div>
@@ -114,6 +103,8 @@
         },
         success: function(data, status) {
             console.log(data)
+            $('.exchange_sum').text(data.data.exchange_sum)
+            $('.yesterday_bonus').text(data.data.yesterday_bonus)
         }
     })
     $('#myModal').modal({
@@ -123,17 +114,56 @@
     let noticeArr = ['公告1', '公告2', '公告3', '公告4', '公告5', '公告6', '公告7', '公告8', '公告9', '公告10', '公告11', '公告12', ]
     let totalPages = noticeArr.length
     let HTML = ''
+    let noticeHTML = ""
+
+    let childrenIndex = 2
     for (let i = 0; i < noticeArr.length; i++) {
-        HTML += "<P>" + noticeArr[i] + "</P>"
+        HTML += `<div class="alert alert-danger tab-pane fade">
+                    <p>${noticeArr[i]}</p>
+                </div>`
+        noticeHTML += `<li>${noticeArr[i]}</li>`
     }
-    $("tab-content").html(HTML)
+    $(".tab-content").html(HTML)
     var options = {
         currentPage: 3,
         totalPages,
         size: "normal",
-        alignment: "right"
+        alignment: "right",
+        onPageClicked: function(e, originalEvent, type, index) {
+            childrenIndex = index
+            $(`.alert`).removeClass('in active')
+            $(`.alert:eq(${childrenIndex-1})`).addClass('in active')
+                // console.log("点击分页=》", childrenIndex)
+
+        }
     }
+    $(`.alert:eq(${childrenIndex})`).addClass('in active')
+
     $('#JsPagination').bootstrapPaginator(options);
+    /*公告文字滚动JS**/
+    $("#noticeDiv").html(noticeHTML)
+
+    for (let i = 0; i < $("#noticeDiv").children().length; i++) {
+        $("#noticeDiv").children()[i].addEventListener('click', function(e) {
+            childrenIndex = i
+            $(`.alert`).removeClass('in active')
+            $(`.alert:eq(${childrenIndex})`).addClass('in active')
+        }, false)
+    }
+
+    function noticeUp(obj, top, time) {
+        $(obj).animate({
+            marginTop: top
+        }, time, function() {
+            $(this).css({
+                marginTop: "0"
+            }).find(":first").appendTo(this);
+        })
+    }
+    $(function() {
+        // 调用 公告滚动函数
+        setInterval("noticeUp('.notice ul','-35px',800)", 2000);
+    });
 </script>
 
 </html>
