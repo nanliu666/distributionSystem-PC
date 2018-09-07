@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>概览</title>
-<link rel="stylesheet" href="../public.css">
 <link rel="stylesheet" href="./index.css">
 <link rel='stylesheet' href='../icon/iconfont.css'>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,18 +22,18 @@
             <table class="table table-striped table-bordered">
                 <tbody>
                     <tr>
-                        <td class=" td"><a href="javascript:;">昨天收益</a></td>
+                        <td class="td"><a href="javascript:;">昨天收益</a></td>
                         <td>
                             <a class="yesterday_bonus" href="javascript:;"></a>
                         </td>
-                        <td class="  td"><a href='../exchange/exchangeIndex.html'>已提现</a></td>
+                        <td class="td"><a href='../exchange/exchangeIndex.html'>已提现</a></td>
                         <td>
                             <a class="exchange_sum" href='../exchange/exchangeIndex.html'></a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <p class=" p" style="margin-top : 10px">快捷入口</p>
+            <p style="margin-top : 10px">快捷入口</p>
 
             <table class="table table-bordered">
                 <tbody>
@@ -102,7 +101,6 @@
                 xhr.setRequestHeader('Authorization', "Bearer " + bearer)
             },
             success: function(data, status) {
-                console.log(data)
                 $('.exchange_sum').text(data.data.exchange_sum)
                 $('.yesterday_bonus').text(data.data.yesterday_bonus)
             }
@@ -156,7 +154,7 @@
     }
     $(function() {
         // 调用 公告滚动函数
-        setInterval("noticeUp('.notice ul','-35px',800)", 2000);
+        setInterval("noticeUp('.notice ul','-35px',1000)", 3000);
     });
 </script>
 
