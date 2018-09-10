@@ -76,31 +76,28 @@
             })
             .on('success.form.bv', function(e) {
                 e.preventDefault();
-                let username = $('#JSusername').val()
-                let password = $('#JSpassword').val()
+                let [username, password, url] = [$('#JSusername').val(), $('#JSpassword').val(), `http://192.168.2.159:9997/v3/account/login`]
                 let param = {
                     type: "username",
                     username,
                     password
                 }
-                $.ajax({
-                    url: "http://192.168.2.159:9997/v3/account/login",
-                    type: "post",
-                    dataType: "json",
+                let axiosConfig = {
+                    url,
+                    method: 'post',
                     data: param,
-                    beforeSend: function(xhr) {
-                        // xhr.setRequestHeader('Authorization')
-                    },
-                    success: function(result, status) {
-                        window.localStorage.setItem('userData', JSON.stringify(result.data));
-                        window.location.href = '../index/index.html'
-                    },
-                    error: function(result, status) {
-                        $("input[name='password']").parent().append('<p data-bv-validator="notEmpty" data-bv-validator-for="password" class="help-block">' + '账号或者密码错误' + '</p>');
+                }
+                axios(axiosConfig)
+                    .then(function(response) {
+                        let data = response.data.data
+                        localStorage.setItem('userData', JSON.stringify(data))
+                        location.href = '../index/index.html'
+                    })
+                    .catch(function(error) {
+                        $("input[name='password']").parentNode.appendChild('<p data-bv-validator="notEmpty" data-bv-validator-for="password" class="help-block">' + '账号或者密码错误' + '</p>');
                         $("input[name='password']").parent().parent().addClass("has-error");
                         $("#JSLogin").removeAttr('disabled')
-                    },
-                })
+                    })
             });
     })
 </script>
