@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>概览</title>
-<link rel="stylesheet" href="./index.css">
-<link rel='stylesheet' href='../icon/iconfont.css'>
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="../plugins/bootstrapPaginator/bootstrap-paginator.js"></script>
-<script src="../plugins/bootstrapPaginator/jquery.history.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>概览</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../icon/iconfont.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../plugins/bootstrapPaginator/bootstrap-paginator.js"></script>
+    <script src="../plugins/bootstrapPaginator/jquery.history.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -27,9 +28,9 @@
                         <td>
                             <a class="yesterday_bonus" href="javascript:;"></a>
                         </td>
-                        <td class="td"><a href='../exchange/exchangeIndex.html'>已提现</a></td>
+                        <td class="td"><a href="../exchange/exchangeIndex.html">已提现</a></td>
                         <td>
-                            <a class="exchange_sum" href='../exchange/exchangeIndex.html'></a>
+                            <a class="exchange_sum" href="../exchange/exchangeIndex.html"></a>
                         </td>
                     </tr>
                 </tbody>
@@ -73,7 +74,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden='true'>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -91,6 +92,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 <script>
     //声明所有变量
@@ -109,23 +111,23 @@
     let ajaxConfig = {
         method: 'POST',
         url,
-        //fix axios config里面设置请求头无法起效果
         headers: {
             'Authorization': "Bearer " + bearer
         },
     }
     let options = {
-            totalPages,
-            size: "normal",
-            alignment: "right",
-            onPageClicked: function(e, originalEvent, type, index) {
-                childrenIndex = index
-                $(`.alert`).removeClass('in active')
-                $(`.alert:eq(${childrenIndex-1})`).addClass('in active')
-                $("#myModalLabel").html(noticeTitleArr[childrenIndex - 1])
-            }
+        totalPages,
+        size: "normal",
+        alignment: "right",
+        onPageClicked: function(e, originalEvent, type, index) {
+            childrenIndex = index
+            $(`.alert`).removeClass('in active')
+            $(`.alert:eq(${childrenIndex-1})`).addClass('in active')
+            $("#myModalLabel").html(noticeTitleArr[childrenIndex - 1])
         }
-        //ajax请求i
+    }
+
+    //ajax请求i
     this.axios.defaults.headers.common['Authorization'] = "Bearer " + bearer;
     this.axios(ajaxConfig)
         .then((data, status) => {
