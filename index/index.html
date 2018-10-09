@@ -96,8 +96,8 @@
 </body>
 <script>
     //声明所有变量
-    let bearer = JSON.parse(localStorage.getItem('userData')).bearer
-    let noticeArr = [{
+    // let bearer = JSON.parse(localStorage.getItem('userData')).bearer
+    var noticeArr = [{
         title: '公告1标题',
         content: '公告1内容'
     }, {
@@ -106,88 +106,74 @@
     }, {
         title: '公告1标题',
         content: '公告1内容'
-    }, ]
-    let [HTML, noticeHTML, noticeTitleArr, childrenIndex, totalPages, url] = ['', '', [], 0, noticeArr.length, 'http://192.168.2.159:9997/v3/statistics/overview']
-    let ajaxConfig = {
-        method: 'POST',
-        url,
-        headers: {
-            'Authorization': "Bearer " + bearer
-        },
-    }
-    let options = {
-        totalPages,
-        size: "normal",
-        alignment: "right",
-        onPageClicked: function(e, originalEvent, type, index) {
-            childrenIndex = index
-            $(`.alert`).removeClass('in active')
-            $(`.alert:eq(${childrenIndex-1})`).addClass('in active')
-            $("#myModalLabel").html(noticeTitleArr[childrenIndex - 1])
-        }
-    }
+    }, ];
 
-    //ajax请求i
-    this.axios.defaults.headers.common['Authorization'] = "Bearer " + bearer;
-    this.axios(ajaxConfig)
-        .then((data, status) => {
-            $('.exchange_sum').text(data.data.data.exchange_sum)
-            $('.yesterday_bonus').text(data.data.data.yesterday_bonus)
-        })
-        .catch((error) => {
-            if (error.response) {
-                // 请求已发出，但服务器响应的状态码不在 2xx 范围内
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else {
-                // 设置请求的时候出现错误
-                console.log('Error', error.message);
-            }
-            console.log(error.config);
-        });
-    //文字滚动
-    if (noticeArr.length !== 0) {
-        $('#myModal').modal({
-            show: true,
-        })
-        $(function() {
-            // 调用 公告滚动函数
-            setInterval("noticeUp('.notice ul','-35px',1000)", 3000);
-        });
-    }
-    //滚动函数
-    function noticeUp(obj, top, time) {
-        $(obj).animate({
-            marginTop: top
-        }, time, function() {
-            $(this).css({
-                marginTop: "0"
-            }).find(":first").appendTo(this);
-        })
-    }
-    for (let i = 0; i < noticeArr.length; i++) {
-        HTML += `<div class="alert alert-danger tab-pane fade">
-                    <p>${noticeArr[i].content}</p>
-                </div>`
-        noticeHTML += `<li><span class="glyphicon glyphicon-volume-up"></span> ${noticeArr[i].content}</li>`
-        noticeTitleArr.push(`${noticeArr[i].title}`)
-    }
-    for (let i = 0; i < $("#noticeDiv").children().length; i++) {
-        $("#noticeDiv").children()[i].addEventListener('click', function(e) {
-            childrenIndex = i
-            $(`.alert`).removeClass('in active')
-            $(`.alert:eq(${childrenIndex})`).addClass('in active')
-            $("#myModalLabel").html(noticeTitleArr[childrenIndex])
-        }, false)
-    }
+    if (noticeArr.length !== 0 ) {
+  $('#myModal').modal({
+    show: true
+  });
+  $(function () {
+    // 调用 公告滚动函数
+    setInterval("noticeUp('.notice ul','-35px',1000)", 3000);
+  });
+}
 
-    //操作dom
-    $(".tab-content").html(HTML)
-    $("#myModalLabel").html(noticeTitleArr[childrenIndex])
-    $(`.alert:eq(${childrenIndex})`).addClass('in active')
-    $('#JsPagination').bootstrapPaginator(options);
-    $("#noticeDiv").html(noticeHTML)
+var _ref = ['', '', [], 0, noticeArr.length],
+    HTML = _ref[0],
+    noticeHTML = _ref[1],
+    noticeTitleArr = _ref[2],
+    childrenIndex = _ref[3],
+    totalPages = _ref[4];
+
+for (var i = 0; i < noticeArr.length; i++) {
+  HTML += '<div class="alert alert-danger tab-pane fade">\n              <p style="word-break: break-all;">' + noticeArr[i].content + '</p>\n          </div>';
+  noticeHTML += '<li><span class="glyphicon glyphicon-volume-up"></span> ' + noticeArr[i].content + '</li>';
+  noticeTitleArr.push('' + noticeArr[i].title);
+}
+$(".tab-content").html(HTML);
+$("#myModalLabel").html(noticeTitleArr[childrenIndex]);
+var options = {
+  totalPages: totalPages,
+  size: "normal",
+  alignment: "right",
+  onPageClicked: function onPageClicked(e, originalEvent, type, index) {
+    childrenIndex = index;
+    $('.alert').removeClass('in active');
+    $('.alert:eq(' + (childrenIndex - 1) + ')').addClass('in active');
+    $("#myModalLabel").html(noticeTitleArr[childrenIndex - 1]);
+  }
+};
+$('.alert:eq(' + childrenIndex + ')').addClass('in active');
+
+$('#JsPagination').bootstrapPaginator(options);
+/*公告文字滚动JS**/
+$("#noticeDiv").html(noticeHTML);
+
+var _loop = function _loop(_i) {
+  $("#noticeDiv").children()[_i].addEventListener('click', function (e) {
+    childrenIndex = _i;
+    $('.alert').removeClass('in active');
+    $('.alert:eq(' + childrenIndex + ')').addClass('in active');
+    $("#myModalLabel").html(noticeTitleArr[childrenIndex + 1]);
+  }, false);
+};
+
+for (var _i = 0; _i < $("#noticeDiv").children().length; _i++) {
+  _loop(_i);
+}
+
+function noticeUp(obj, top, time) {
+  $(obj).animate({
+    marginTop: top
+  }, time, function () {
+    $(this).css({
+      marginTop: "0"
+    }).find(":first").appendTo(this);
+  });
+}
+jQuery(document).ready(function () {
+  setInterval("noticeUp('.notice ul','-35px',1000)", 3000);
+});
 </script>
 
 </html>
